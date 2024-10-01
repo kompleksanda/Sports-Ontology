@@ -1,0 +1,1365 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY dct "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY vann "http://purl.org/vocab/vann/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY sport "http://purl.org/sport/ontology/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://purl.org/sport/ontology/"
+     xml:base="http://purl.org/sport/ontology/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:dct="http://purl.org/dc/terms/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:sport="http://purl.org/sport/ontology/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:vann="http://purl.org/vocab/vann/">
+    <owl:Ontology rdf:about="http://purl.org/sport/ontology/">
+        <rdfs:label>Sports ontology</rdfs:label>
+        <rdfs:comment>An ontology modelling sports competitions and the results.</rdfs:comment>
+        <vann:preferredNamespaceUri>http://purl.org/sport/ontology/</vann:preferredNamespaceUri>
+        <dct:modified>2011-09-17</dct:modified>
+        <vann:preferredNamespacePrefix>sport</vann:preferredNamespacePrefix>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <dct:issued>2009-07-01</dct:issued>
+        <dct:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
+        <foaf:maker rdf:resource="&sport;#author"/>
+        <rdfs:seeAlso rdf:resource="http://www.tobion.de/sportservice/"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/type -->
+
+    <owl:AnnotationProperty rdf:about="&dct;type"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Sport -->
+
+    <owl:AnnotationProperty rdf:about="&sport;Sport"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/play -->
+
+    <owl:AnnotationProperty rdf:about="&sport;play">
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#maxCardinality -->
+
+    <owl:AnnotationProperty rdf:about="&owl;maxCardinality"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/homepage -->
+
+    <owl:AnnotationProperty rdf:about="&foaf;homepage"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/name -->
+
+    <owl:AnnotationProperty rdf:about="&foaf;name"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/NET/c4dm/event.owl#sub_event -->
+
+    <owl:ObjectProperty rdf:about="http://purl.org/NET/c4dm/event.owl#sub_event"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasPart -->
+
+    <owl:ObjectProperty rdf:about="&dct;hasPart"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/associatedSportsClub -->
+
+    <owl:ObjectProperty rdf:about="&sport;associatedSportsClub">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&sport;SportsClub"/>
+        <rdfs:domain rdf:resource="&sport;Team"/>
+        <owl:inverseOf rdf:resource="&sport;fieldsTeam"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/captain -->
+
+    <owl:ObjectProperty rdf:about="&sport;captain">
+        <rdfs:label xml:lang="de">mannschaftsleiter</rdfs:label>
+        <rdfs:label xml:lang="en">captain</rdfs:label>
+        <rdfs:domain rdf:resource="&sport;Team"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/coach -->
+
+    <owl:ObjectProperty rdf:about="&sport;coach">
+        <rdfs:label xml:lang="de">trainer</rdfs:label>
+        <rdfs:label xml:lang="en">coach</rdfs:label>
+        <rdfs:domain rdf:resource="&sport;Team"/>
+        <rdfs:range rdf:resource="&foaf;Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/fieldsTeam -->
+
+    <owl:ObjectProperty rdf:about="&sport;fieldsTeam">
+        <rdfs:label xml:lang="de">stellt Team auf</rdfs:label>
+        <rdfs:label xml:lang="en">fields Team</rdfs:label>
+        <rdfs:comment xml:lang="de">Ein Sportverein kann viele Mannschaften aufstellen.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A Sports Club can field many Teams.</rdfs:comment>
+        <rdfs:domain rdf:resource="&sport;SportsClub"/>
+        <rdfs:range rdf:resource="&sport;Team"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/organizedBy -->
+
+    <owl:ObjectProperty rdf:about="&sport;organizedBy">
+        <rdfs:label xml:lang="en">organized by</rdfs:label>
+        <rdfs:range rdf:resource="&sport;SportOrganization"/>
+        <rdfs:domain rdf:resource="&sport;SportsEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/outcome -->
+
+    <owl:ObjectProperty rdf:about="&sport;outcome">
+        <rdfs:domain rdf:resource="&sport;SportsEvent"/>
+        <rdfs:range rdf:resource="&sport;TeamScore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/partOfEvent -->
+
+    <owl:ObjectProperty rdf:about="&sport;partOfEvent">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:label xml:lang="en">part of Event</rdfs:label>
+        <rdfs:range rdf:resource="&sport;SportsEvent"/>
+        <owl:inverseOf rdf:resource="&sport;subEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/participant -->
+
+    <owl:ObjectProperty rdf:about="&sport;participant">
+        <rdfs:range rdf:resource="&sport;Athlete"/>
+        <rdfs:range rdf:resource="&sport;Team"/>
+        <rdfs:domain rdf:resource="&sport;TeamScore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/place -->
+
+    <owl:ObjectProperty rdf:about="&sport;place">
+        <rdfs:range rdf:resource="&sport;Venue"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/play -->
+
+    <owl:ObjectProperty rdf:about="&sport;play">
+        <rdfs:range rdf:resource="&sport;FOCUSport_Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/qualifiesFor -->
+
+    <owl:ObjectProperty rdf:about="&sport;qualifiesFor">
+        <rdfs:label xml:lang="en">qualifies for</rdfs:label>
+        <rdfs:comment xml:lang="en">Multi-stage tournaments can have &quot;regular season&quot; (e.g. group tournament) acting as qualification for the &quot;post season&quot; or &quot;playoffs&quot; (e.g. single-elimination tournament)</rdfs:comment>
+        <rdfs:range rdf:resource="&sport;Tournament"/>
+        <rdfs:domain rdf:resource="&sport;Tournament"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/rankingMethod -->
+
+    <owl:ObjectProperty rdf:about="&sport;rankingMethod">
+        <rdfs:label xml:lang="en">ranking method</rdfs:label>
+        <rdfs:comment xml:lang="en">Determines the tournament type.</rdfs:comment>
+        <rdfs:range rdf:resource="&sport;RankingSystem"/>
+        <rdfs:domain rdf:resource="&sport;Tournament"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/subEvent -->
+
+    <owl:ObjectProperty rdf:about="&sport;subEvent">
+        <rdfs:label xml:lang="de">unter-Veranstaltung</rdfs:label>
+        <rdfs:label xml:lang="en">sub-Event</rdfs:label>
+        <rdfs:comment xml:lang="de">Eine Veranstaltung kann mehrere andere Turniere oder Matches umfassen, z.B. Sätze und Spiele. Objekt ist ein SportsEvent oder zum Beispiel eine Folge (rdf:Seq) von Matches, wenn deren Spiel-Reihenfolge wichtig ist.</rdfs:comment>
+        <rdfs:comment xml:lang="en">A sports event comprises other tournaments or single matches, like sets or games. Object is a SportsEvent or for example a sequence (rdf:Seq) of Matches when the playing order is important.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/NET/c4dm/event.owl#sub_event"/>
+        <rdfs:subPropertyOf rdf:resource="&dct;hasPart"/>
+        <rdfs:domain rdf:resource="&sport;SportsEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/teamMate -->
+
+    <owl:ObjectProperty rdf:about="&sport;teamMate">
+        <rdfs:range rdf:resource="&sport;Athlete"/>
+        <rdfs:domain rdf:resource="&sport;Team"/>
+        <rdfs:subPropertyOf rdf:resource="&foaf;member"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/member -->
+
+    <owl:ObjectProperty rdf:about="&foaf;member"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/subject -->
+
+    <owl:DatatypeProperty rdf:about="&dct;subject"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/characteristic -->
+
+    <owl:DatatypeProperty rdf:about="&sport;characteristic">
+        <rdfs:label xml:lang="de">ausprägung</rdfs:label>
+        <rdfs:label xml:lang="en">characteristic</rdfs:label>
+        <rdfs:comment xml:lang="de">Die Art des Matches oder ein anderes Merkmal.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The type of match or other feature.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&dct;subject"/>
+        <rdfs:domain rdf:resource="&sport;Match"/>
+        <rdfs:subPropertyOf rdf:resource="&xsd;label"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/city -->
+
+    <owl:DatatypeProperty rdf:about="&sport;city">
+        <rdfs:domain rdf:resource="&sport;Venue"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/class -->
+
+    <owl:DatatypeProperty rdf:about="&sport;class">
+        <rdfs:label xml:lang="en">class </rdfs:label>
+        <rdfs:domain rdf:resource="&sport;Tournament"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/classLevel -->
+
+    <owl:DatatypeProperty rdf:about="&sport;classLevel">
+        <rdfs:label xml:lang="en">league system level</rdfs:label>
+        <rdfs:comment xml:lang="en">Arrange tournaments hierarchically forming a pyramid. The higher the value, the weaker the performance level.</rdfs:comment>
+        <rdfs:domain rdf:resource="&sport;Tournament"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/division -->
+
+    <owl:DatatypeProperty rdf:about="&sport;division">
+        <rdfs:label xml:lang="en">division </rdfs:label>
+        <rdfs:comment xml:lang="en">Divisions allow leagues to be split into smaller groups, e.g. based on region.</rdfs:comment>
+        <rdfs:domain rdf:resource="&sport;League"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/homeAdvantage -->
+
+    <owl:DatatypeProperty rdf:about="&sport;homeAdvantage">
+        <rdfs:label xml:lang="en">home advantage</rdfs:label>
+        <rdfs:domain rdf:resource="&sport;TeamScore"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/originalScore -->
+
+    <owl:DatatypeProperty rdf:about="&sport;originalScore">
+        <rdfs:label xml:lang="en">original score</rdfs:label>
+        <rdfs:comment xml:lang="en">The original score in case the final score had to be changed due to formal reasons.</rdfs:comment>
+        <rdfs:domain rdf:resource="&sport;TeamScore"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/postalCode -->
+
+    <owl:DatatypeProperty rdf:about="&sport;postalCode">
+        <rdfs:domain rdf:resource="&sport;Venue"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/promoted -->
+
+    <owl:DatatypeProperty rdf:about="&sport;promoted">
+        <rdfs:label xml:lang="en">promoted </rdfs:label>
+        <rdfs:domain rdf:resource="&sport;League"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/rank -->
+
+    <owl:DatatypeProperty rdf:about="&sport;rank">
+        <rdfs:label xml:lang="en">rank</rdfs:label>
+        <rdfs:domain rdf:resource="&sport;TeamScore"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/relegated -->
+
+    <owl:DatatypeProperty rdf:about="&sport;relegated">
+        <rdfs:label xml:lang="en">relegated </rdfs:label>
+        <rdfs:domain rdf:resource="&sport;League"/>
+        <rdfs:range rdf:resource="&rdfs;Literal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/score -->
+
+    <owl:DatatypeProperty rdf:about="&sport;score">
+        <rdfs:label xml:lang="en">score</rdfs:label>
+        <rdfs:comment xml:lang="en">The decisive measurement for the teams success in a match. Can be the goals in football or the time in a swimming competition.</rdfs:comment>
+        <rdfs:domain rdf:resource="&sport;TeamScore"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/season -->
+
+    <owl:DatatypeProperty rdf:about="&sport;season">
+        <rdfs:label xml:lang="en">season</rdfs:label>
+        <rdfs:domain rdf:resource="&sport;Tournament"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/street -->
+
+    <owl:DatatypeProperty rdf:about="&sport;street">
+        <rdfs:domain rdf:resource="&sport;Venue"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://purl.org/sport/ontology/teamNumber -->
+
+    <owl:DatatypeProperty rdf:about="&sport;teamNumber">
+        <owl:maxCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxCardinality>
+        <rdfs:domain rdf:resource="&sport;Team"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#label -->
+
+    <owl:DatatypeProperty rdf:about="&xsd;label"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Place -->
+
+    <owl:Class rdf:about="http://dbpedia.org/ontology/Place"/>
+    
+
+
+    <!-- http://purl.org/NET/c4dm/event.owl#Event -->
+
+    <owl:Class rdf:about="http://purl.org/NET/c4dm/event.owl#Event"/>
+    
+
+
+    <!-- http://purl.org/dc/dcmitype/Event -->
+
+    <owl:Class rdf:about="http://purl.org/dc/dcmitype/Event"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Accesibility -->
+
+    <owl:Class rdf:about="&sport;Accesibility">
+        <rdfs:subClassOf rdf:resource="&sport;Services"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Athlete -->
+
+    <owl:Class rdf:about="&sport;Athlete">
+        <rdfs:label xml:lang="en">Athlete</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Person"/>
+        <rdfs:comment xml:lang="en">An athlete is a person who participates in any sport. Aka sportsperson.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Bronze -->
+
+    <owl:Class rdf:about="&sport;Bronze">
+        <rdfs:subClassOf rdf:resource="&sport;FOCUSport_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/DoubleTeam -->
+
+    <owl:Class rdf:about="&sport;DoubleTeam">
+        <rdfs:label xml:lang="en">Double Team</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&sport;Team"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&sport;teamMate"/>
+                        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:comment xml:lang="en">A Team consisting of exactly two Athletes.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/EliminationSystem -->
+
+    <owl:Class rdf:about="&sport;EliminationSystem">
+        <rdfs:label xml:lang="de">Eliminationsverfahren</rdfs:label>
+        <rdfs:label xml:lang="en">Elimination System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;RankingSystem"/>
+        <rdfs:comment xml:lang="en">Each player has a set amount of loses before losing eligibility for the first prize of the event. Also named knockout system.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/FOCUSport_Activity -->
+
+    <owl:Class rdf:about="&sport;FOCUSport_Activity">
+        <rdfs:label xml:lang="en">FOCUSport Activity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Facilities -->
+
+    <owl:Class rdf:about="&sport;Facilities">
+        <rdfs:subClassOf rdf:resource="&sport;Venue"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Gold -->
+
+    <owl:Class rdf:about="&sport;Gold">
+        <rdfs:subClassOf rdf:resource="&sport;FOCUSport_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/GroupSystem -->
+
+    <owl:Class rdf:about="&sport;GroupSystem">
+        <rdfs:label xml:lang="de">Gruppen System</rdfs:label>
+        <rdfs:label xml:lang="en">Group System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;RankingSystem"/>
+        <rdfs:comment xml:lang="en">A group tournament, league, division or conference involves all competitors playing a number of fixtures. 
+		Points are awarded for each fixture, with competitors ranked based either on total number of points or average points per fixture.
+	</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/IndependentTeam -->
+
+    <owl:Class rdf:about="&sport;IndependentTeam">
+        <rdfs:subClassOf rdf:resource="&sport;Team"/>
+        <rdfs:comment xml:lang="en">
+		Characteristics: matches are played and won by individuals or partners, every person performs basically the same actions, 
+		and whether one player wins or loses has no direct effect on the performance of the next player. If all team members each perform the same basic tasks, 
+		such as students working problems in a math class, or outside sales employees making phone calls, then it is likely that this team is an independent team. 
+		They may be able to help each other — perhaps by offering advice or practice time, by providing moral support, or by helping in the background during a busy time — 
+		but each individual&apos;s success is primarily due to each individual&apos;s own efforts.
+		Example: chess team.
+	</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Team#Types_of_teams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/InterdependentTeam -->
+
+    <owl:Class rdf:about="&sport;InterdependentTeam">
+        <rdfs:subClassOf rdf:resource="&sport;Team"/>
+        <rdfs:comment xml:lang="en">
+		Characteristics: successful play requires co-operation between team members, within that team members typically specialize in different tasks, 
+		and	the success of every individual is inextricably bound to the success of the whole team.
+		Example: rugby team.
+	</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Team#Types_of_teams"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/LadderSystem -->
+
+    <owl:Class rdf:about="&sport;LadderSystem">
+        <rdfs:label xml:lang="de">Laddersystem</rdfs:label>
+        <rdfs:label xml:lang="en">Ladder System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;RankingSystem"/>
+        <rdfs:comment xml:lang="en">All competitors are ranked on a &quot;ladder&quot;. Any contestant can challenge a competitor ranked slightly higher; if the challenger wins the match (or the challenge is refused) they swap places on the ladder.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/League -->
+
+    <owl:Class rdf:about="&sport;League">
+        <rdfs:label xml:lang="en">League</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;Tournament"/>
+        <rdfs:comment xml:lang="en">
+		The common thread between all sports leagues is a structure that allows teams or individuals to compete against each other 
+		in a nonrandom order on a set schedule, usually called a &quot;season,&quot; with the results of the individual competitions being used to name an overall champion.
+		Leagues are often divided into subdivisions on historical or geographical lines.
+		There may also be a group of leagues that are tied together in a hierarchical fashion by promotion and relegation.
+		They may also act as qualification (see &quot;qualifiesFor&quot;) for a playoff.
+	</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Local_Facilities -->
+
+    <owl:Class rdf:about="&sport;Local_Facilities">
+        <rdfs:subClassOf rdf:resource="&sport;Facilities"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Match -->
+
+    <owl:Class rdf:about="&sport;Match">
+        <rdfs:label xml:lang="en">Match</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;SportsEvent"/>
+        <rdfs:comment xml:lang="en">A single contest between Athletes or Teams.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Playoff -->
+
+    <owl:Class rdf:about="&sport;Playoff">
+        <rdfs:label xml:lang="de">Play-off</rdfs:label>
+        <rdfs:label xml:lang="en">Playoff</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;Tournament"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/RankingSystem -->
+
+    <owl:Class rdf:about="&sport;RankingSystem">
+        <rdfs:label xml:lang="en">Ranking System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en">The format for determining the best competitor in a game or sport.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/RoundRobin -->
+
+    <owl:Class rdf:about="&sport;RoundRobin">
+        <rdfs:label xml:lang="de">Round-Robin</rdfs:label>
+        <rdfs:label xml:lang="en">Round-Robin</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;GroupSystem"/>
+        <rdfs:comment xml:lang="de">Rundenturnier / Jeder gegen jeden</rdfs:comment>
+        <rdfs:comment xml:lang="en">In a round-robin system, each competitor plays all the others an equal number of times.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Scholarship -->
+
+    <owl:Class rdf:about="&sport;Scholarship">
+        <rdfs:subClassOf rdf:resource="&sport;Services"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Services -->
+
+    <owl:Class rdf:about="&sport;Services"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Silver -->
+
+    <owl:Class rdf:about="&sport;Silver">
+        <rdfs:subClassOf rdf:resource="&sport;FOCUSport_Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SportGoverningBody -->
+
+    <owl:Class rdf:about="&sport;SportGoverningBody">
+        <rdfs:label xml:lang="de">Sportverband</rdfs:label>
+        <rdfs:label xml:lang="en">Sport Governing Body</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;SportOrganization"/>
+        <rdfs:comment xml:lang="en">
+		A sport governing body is a sports organization that has a regulatory or sanctioning function. 
+		It administers its sport, most often crafting rules, promoting the sport to prospective spectators and fans, developing prospective players, 
+		and organizing championships. Other names include (national/internation) association and federation. 
+		National Federations have the same objectives as an international federation, but within the scope of one country, 
+		or even part of a country, as the name implies. They support local clubs and are often responsible for national teams.
+	</rdfs:comment>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Sport_governing_body"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SportOrganization -->
+
+    <owl:Class rdf:about="&sport;SportOrganization">
+        <rdfs:label xml:lang="en">Sport Organization</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&foaf;Organization"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SportsClub -->
+
+    <owl:Class rdf:about="&sport;SportsClub">
+        <rdfs:label xml:lang="de">Sportverein</rdfs:label>
+        <rdfs:label xml:lang="en">Sports Club</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;SportOrganization"/>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Sports_club"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SportsEvent -->
+
+    <owl:Class rdf:about="&sport;SportsEvent">
+        <rdfs:label xml:lang="en">Sports Event</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/NET/c4dm/event.owl#Event"/>
+        <rdfs:subClassOf rdf:resource="http://purl.org/dc/dcmitype/Event"/>
+        <dct:type rdf:resource="http://purl.org/dc/dcmitype/Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Strathclyde_Sport -->
+
+    <owl:Class rdf:about="&sport;Strathclyde_Sport">
+        <rdfs:subClassOf rdf:resource="&sport;Facilities"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SwissSystem -->
+
+    <owl:Class rdf:about="&sport;SwissSystem">
+        <rdfs:label xml:lang="de">Schweizer System</rdfs:label>
+        <rdfs:label xml:lang="en">Swiss System</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;GroupSystem"/>
+        <rdfs:comment xml:lang="en">The principle of the Swiss system is that each player will be pitted against another player who has done as well (or poorly) as him or herself.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Team -->
+
+    <owl:Class rdf:about="&sport;Team">
+        <rdfs:subClassOf rdf:resource="&foaf;Group"/>
+        <rdfs:seeAlso rdf:resource="http://en.wikipedia.org/wiki/Team"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/TeamScore -->
+
+    <owl:Class rdf:about="&sport;TeamScore">
+        <rdfs:label xml:lang="en">Team Score</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en">Association class for connecting Athletes/Teams per Match with a score.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/TimeTable -->
+
+    <owl:Class rdf:about="&sport;TimeTable"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Tournament -->
+
+    <owl:Class rdf:about="&sport;Tournament">
+        <rdfs:label xml:lang="en">Tournament</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&sport;SportsEvent"/>
+        <rdfs:comment xml:lang="en">A tournament is a competition involving a relatively large number of competitors, all participating in a sport or game.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Venue -->
+
+    <owl:Class rdf:about="&sport;Venue">
+        <rdfs:subClassOf rdf:resource="http://dbpedia.org/ontology/Place"/>
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <rdfs:comment xml:lang="en">venue, sports hall</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Well-being_Support -->
+
+    <owl:Class rdf:about="&sport;Well-being_Support">
+        <rdfs:subClassOf rdf:resource="&sport;Services"/>
+    </owl:Class>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Group -->
+
+    <owl:Class rdf:about="&foaf;Group"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Organization -->
+
+    <owl:Class rdf:about="&foaf;Organization"/>
+    
+
+
+    <!-- http://xmlns.com/foaf/0.1/Person -->
+
+    <owl:Class rdf:about="&foaf;Person"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://dbpedia.org/ontology/Activity -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/ontology/Activity">
+        <owl:sameAs rdf:resource="&sport;Activity"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Athlete -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/ontology/Athlete">
+        <owl:sameAs rdf:resource="&sport;Athlete"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Game -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/ontology/Game">
+        <owl:sameAs rdf:resource="&sport;Game"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/Sport -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/ontology/Sport">
+        <owl:sameAs rdf:resource="&sport;Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/SportsEvent -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/ontology/SportsEvent">
+        <owl:sameAs rdf:resource="&sport;SportsEvent"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://dbpedia.org/ontology/SportsTeam -->
+
+    <owl:NamedIndividual rdf:about="http://dbpedia.org/ontology/SportsTeam">
+        <owl:sameAs rdf:resource="&sport;Team"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/NET/c4dm/event.owl#place -->
+
+    <owl:NamedIndividual rdf:about="http://purl.org/NET/c4dm/event.owl#place">
+        <owl:sameAs rdf:resource="&sport;place"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Activity -->
+
+    <owl:NamedIndividual rdf:about="&sport;Activity"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Athlete -->
+
+    <owl:NamedIndividual rdf:about="&sport;Athlete"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Badminton -->
+
+    <owl:NamedIndividual rdf:about="&sport;Badminton">
+        <rdf:type rdf:resource="&sport;Silver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Braehead_Curling_Rink -->
+
+    <owl:NamedIndividual rdf:about="&sport;Braehead_Curling_Rink">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Braehead_Ice_Hockey_Rink -->
+
+    <owl:NamedIndividual rdf:about="&sport;Braehead_Ice_Hockey_Rink">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Canoeing -->
+
+    <owl:NamedIndividual rdf:about="&sport;Canoeing">
+        <rdf:type rdf:resource="&sport;Silver"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Cathkin_Braes_Mountain_bike_Trails -->
+
+    <owl:NamedIndividual rdf:about="&sport;Cathkin_Braes_Mountain_bike_Trails">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/EliminationSystem -->
+
+    <owl:NamedIndividual rdf:about="&sport;EliminationSystem"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Emirates_Arena -->
+
+    <owl:NamedIndividual rdf:about="&sport;Emirates_Arena">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Faculty_of_Humanities_and_Social_Sciences -->
+
+    <owl:NamedIndividual rdf:about="&sport;Faculty_of_Humanities_and_Social_Sciences">
+        <rdf:type rdf:resource="&foaf;Organization"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Game -->
+
+    <owl:NamedIndividual rdf:about="&sport;Game"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Glasgow_Ski_and_Snowboard_Centre -->
+
+    <owl:NamedIndividual rdf:about="&sport;Glasgow_Ski_and_Snowboard_Centre">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/GroupSystem -->
+
+    <owl:NamedIndividual rdf:about="&sport;GroupSystem"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Gym_sevices -->
+
+    <owl:NamedIndividual rdf:about="&sport;Gym_sevices">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Health_MOTs -->
+
+    <owl:NamedIndividual rdf:about="&sport;Health_MOTs">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Kelvingrove_Lawn_Bowls_Center -->
+
+    <owl:NamedIndividual rdf:about="&sport;Kelvingrove_Lawn_Bowls_Center">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/League -->
+
+    <owl:NamedIndividual rdf:about="&sport;League">
+        <rankingMethod rdf:resource="&sport;GroupSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/LifeStyle_consultations -->
+
+    <owl:NamedIndividual rdf:about="&sport;LifeStyle_consultations">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Men&apos;s_Hockey -->
+
+    <owl:NamedIndividual rdf:about="&sport;Men&apos;s_Hockey">
+        <rdf:type rdf:resource="&sport;Bronze"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Men&apos;s_Volleyball -->
+
+    <owl:NamedIndividual rdf:about="&sport;Men&apos;s_Volleyball">
+        <rdf:type rdf:resource="&sport;Bronze"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Netball -->
+
+    <owl:NamedIndividual rdf:about="&sport;Netball">
+        <rdf:type rdf:resource="&sport;Gold"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Performance_Sport_Scholarship_Programme -->
+
+    <owl:NamedIndividual rdf:about="&sport;Performance_Sport_Scholarship_Programme">
+        <rdf:type rdf:resource="&sport;Scholarship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Pinkston_Watersport_Center -->
+
+    <owl:NamedIndividual rdf:about="&sport;Pinkston_Watersport_Center">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Playoff -->
+
+    <owl:NamedIndividual rdf:about="&sport;Playoff">
+        <rankingMethod rdf:resource="&sport;EliminationSystem"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Pregnancy -->
+
+    <owl:NamedIndividual rdf:about="&sport;Pregnancy">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Professor_David_C._Sherrington_FRS_Sport_Award -->
+
+    <owl:NamedIndividual rdf:about="&sport;Professor_David_C._Sherrington_FRS_Sport_Award">
+        <rdf:type rdf:resource="&sport;Scholarship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Renfrew_Shitokai_Karate_Club -->
+
+    <owl:NamedIndividual rdf:about="&sport;Renfrew_Shitokai_Karate_Club">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Royal_and_Ancient_Golf_Scholarships -->
+
+    <owl:NamedIndividual rdf:about="&sport;Royal_and_Ancient_Golf_Scholarships">
+        <rdf:type rdf:resource="&sport;Scholarship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Rugby_Union -->
+
+    <owl:NamedIndividual rdf:about="&sport;Rugby_Union">
+        <rdf:type rdf:resource="&sport;Gold"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SSPE_rooms -->
+
+    <owl:NamedIndividual rdf:about="&sport;SSPE_rooms">
+        <rdf:type rdf:resource="&sport;Strathclyde_Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Seminars,_workshops_and_courses -->
+
+    <owl:NamedIndividual rdf:about="&sport;Seminars,_workshops_and_courses">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Sir_Chris_Hoy_Velodrome -->
+
+    <owl:NamedIndividual rdf:about="&sport;Sir_Chris_Hoy_Velodrome">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Snowfactor_Indoor_Ski_Slope -->
+
+    <owl:NamedIndividual rdf:about="&sport;Snowfactor_Indoor_Ski_Slope">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Sport -->
+
+    <owl:NamedIndividual rdf:about="&sport;Sport"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Sport_Union -->
+
+    <owl:NamedIndividual rdf:about="&sport;Sport_Union">
+        <rdf:type rdf:resource="&sport;SportOrganization"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/SportsEvent -->
+
+    <owl:NamedIndividual rdf:about="&sport;SportsEvent"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Stepps_Playing_Fields -->
+
+    <owl:NamedIndividual rdf:about="&sport;Stepps_Playing_Fields">
+        <rdf:type rdf:resource="&sport;Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/StrathActive_Classes -->
+
+    <owl:NamedIndividual rdf:about="&sport;StrathActive_Classes">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Strathclyde_Country_Park -->
+
+    <owl:NamedIndividual rdf:about="&sport;Strathclyde_Country_Park">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Swimming_pool -->
+
+    <owl:NamedIndividual rdf:about="&sport;Swimming_pool">
+        <rdf:type rdf:resource="&sport;Strathclyde_Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Team -->
+
+    <owl:NamedIndividual rdf:about="&sport;Team"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/The_Dr_Jack_Dunlop_Elite_Athlete_Scholarship -->
+
+    <owl:NamedIndividual rdf:about="&sport;The_Dr_Jack_Dunlop_Elite_Athlete_Scholarship">
+        <rdf:type rdf:resource="&sport;Scholarship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Tollcross_International_Swimming_Pool -->
+
+    <owl:NamedIndividual rdf:about="&sport;Tollcross_International_Swimming_Pool">
+        <rdf:type rdf:resource="&sport;Local_Facilities"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/University_Wellbeing_Services -->
+
+    <owl:NamedIndividual rdf:about="&sport;University_Wellbeing_Services">
+        <rdf:type rdf:resource="&sport;Well-being_Support"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Waterpolo -->
+
+    <owl:NamedIndividual rdf:about="&sport;Waterpolo">
+        <rdf:type rdf:resource="&sport;Bronze"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/Winning_Students_Scholarships -->
+
+    <owl:NamedIndividual rdf:about="&sport;Winning_Students_Scholarships">
+        <rdf:type rdf:resource="&sport;Scholarship"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/city -->
+
+    <owl:NamedIndividual rdf:about="&sport;city">
+        <owl:sameAs rdf:resource="http://rdf.data-vocabulary.org/locality"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/dance_studio -->
+
+    <owl:NamedIndividual rdf:about="&sport;dance_studio">
+        <rdf:type rdf:resource="&sport;Strathclyde_Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/fitness_suite -->
+
+    <owl:NamedIndividual rdf:about="&sport;fitness_suite">
+        <rdf:type rdf:resource="&sport;Strathclyde_Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/place -->
+
+    <owl:NamedIndividual rdf:about="&sport;place"/>
+    
+
+
+    <!-- http://purl.org/sport/ontology/postalCode -->
+
+    <owl:NamedIndividual rdf:about="&sport;postalCode">
+        <owl:sameAs rdf:resource="http://rdf.data-vocabulary.org/postal-code"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/sport_halls -->
+
+    <owl:NamedIndividual rdf:about="&sport;sport_halls">
+        <rdf:type rdf:resource="&sport;Strathclyde_Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/squash_courts -->
+
+    <owl:NamedIndividual rdf:about="&sport;squash_courts">
+        <rdf:type rdf:resource="&sport;Strathclyde_Sport"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/street -->
+
+    <owl:NamedIndividual rdf:about="&sport;street">
+        <owl:sameAs rdf:resource="http://rdf.data-vocabulary.org/street-address"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://purl.org/sport/ontology/#author -->
+
+    <owl:NamedIndividual rdf:about="&sport;#author">
+        <rdf:type rdf:resource="&foaf;Person"/>
+        <foaf:name>Tobias Schultze</foaf:name>
+        <foaf:homepage rdf:resource="http://www.tobion.de/"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://rdf.data-vocabulary.org/locality -->
+
+    <owl:NamedIndividual rdf:about="http://rdf.data-vocabulary.org/locality"/>
+    
+
+
+    <!-- http://rdf.data-vocabulary.org/postal-code -->
+
+    <owl:NamedIndividual rdf:about="http://rdf.data-vocabulary.org/postal-code"/>
+    
+
+
+    <!-- http://rdf.data-vocabulary.org/street-address -->
+
+    <owl:NamedIndividual rdf:about="http://rdf.data-vocabulary.org/street-address"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&sport;Freestyle100m">
+        <Sport></Sport>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
